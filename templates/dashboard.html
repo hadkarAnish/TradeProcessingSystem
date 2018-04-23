@@ -1,0 +1,42 @@
+{% extends 'includes/_navbar_v2.html' %} {% block content2 %}
+<h1>Dashboard</h1>
+<h2>Welcome {{ session.username }}!</h2>
+<a class="btn btn-primary" href="/add_trade">New Trade</a>
+<p></p>
+<table class="table table-striped" <tr>
+    <th>ID</th>
+    <th>Nominal</th>
+    <th>Price</th>
+    <th>Counterparty</th>
+    <th>Market</th>
+    <th>Instrument</th>
+    <th>Trade Date</th>
+    <th>Settlement Date</th>
+    <th>Trade Entry Date</th>
+    <th>Settlement Status</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+    {% for trade in trades %}
+    <tr>
+        <td>{{ trade.trade_id }}</td>
+        <td>{{ trade.nominal }}</td>
+        <td>{{ trade.price }}</td>
+        <td>{{ trade.cpty }}</td>
+        <td>{{ trade.market }}</td>
+        <td>{{ trade.instrument }}</td>
+        <td>{{ trade.trade_date }}</td>
+        <td>{{ trade.sett_date }}</td>
+        <td>{{ trade.entry_date }}</td>
+        <td>{{ trade.sett_stus_ind }}</td>
+        <td><a href="edit_trade/{{ trade.trade_id }}" class="btn btn-default">Edit</a></td>
+        <td>
+            <form action="{{ url_for('delete_trade', id=trade.trade_id) }}" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="submit" value="Delete" class="btn btn-danger">
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

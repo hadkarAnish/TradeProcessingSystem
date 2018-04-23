@@ -1,0 +1,34 @@
+{% extends '/includes/_navbar_v2.html' %} {% block content2 %}
+<div class="card text-center">
+    <div class="card-body">
+        <h5 class="card-title">Settlement Instruction details</h5>
+        <p class="card-text">SETI details for trade ID {{seti.trade_id}}</p>
+    </div>
+    <!-- Table -->
+    <div class=".table-responsive">
+        <table class="table">
+            <tr>
+                <th>Settlement Instruction ID</th>
+                <th>Trade ID</th>
+                <th>Settlement Instruction Status</th>
+                <th>Nominal</th>
+                <th>Price</th>
+                <th>Company Stock Account</th>
+                <th>Cpty Stock Account</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">{{seti.seti_id}}</th>
+                    <td>{{seti.trade_id}}</td>
+                    <td>{{seti.seti_stus_ind}}</td>
+                    <td>{{seti.nominal}}</td>
+                    <td>{{seti.price}}</td>
+                    <td>{{seti.cmpystockaccount}}</td>
+                    <td>{{seti.cptystockaccount}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br> {% endblock %}

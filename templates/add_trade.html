@@ -1,0 +1,85 @@
+{% extends 'includes/_navbar_v2.html' %} {% block content2 %}
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" /> -->
+    <link href="{{ url_for('static', filename='styles/bootstrap-datepicker.min.css') }}"></link>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <!-- <script src="{{ url_for('static', filename='js/moment.js') }}"></script> -->
+    <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+     <script type="text/javascript">
+        $.fn.datepicker.defaults.format = "yyyy-mm-dd";
+
+        // $( document ).ready(function() {
+        //     $('.datepicker').datepicker({
+        //         format: "mm-dd-yyyy",
+        //     });
+        // });
+    </script>
+<h1>Add a new Trade</h1> {% from "includes/_formhelpers.html" import render_field %}
+<form method="POST" action="">
+    <div class="form-group">
+        {{ render_field(form.nominal, class_="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.price, class_="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.cpty, class_="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.market, class_="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.instrument, class_="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.trade_date, class_="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ render_field(form.sett_date, class_="form-control") }}
+        <!-- <div class="input-group" data-provide="datepicker">
+            <input type="text" class="form-control">
+        </div> -->
+    </div>
+    <div class="form-group">
+        {{ render_field(form.sett_stus_ind, class_="form-control") }}
+    </div>
+    <hr>
+    <div class="container-fluid">
+        <div class="form-group">
+            {{ render_field(form.seti_stus_ind, class_="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ render_field(form.cmpystockaccount, class_="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ render_field(form.cptystockaccount, class_="form-control") }}
+        </div>
+    </div>
+<!-- <div>
+    <input class="datepicker" data-date-format="mm/dd/yyyy">
+</div> -->
+    <!-- <div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+ -->
+     <p><input type="submit" class="btn btn-primary" value="Submit"></p>
+</form>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script> -->
+<!-- <script src="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/src/js/bootstrap-datetimepicker.js"></script> -->
+<!-- <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+            console.log('sadfkjhasdkfj')
+        });
+</script> -->
+{% endblock %}

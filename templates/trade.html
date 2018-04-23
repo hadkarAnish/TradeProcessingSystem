@@ -1,0 +1,56 @@
+{% extends '/includes/_navbar_v2.html' %} {% block content2 %}
+<div class="card text-center">
+    <div class="card-body">
+        <h5 class="card-title">Trade details</h5>
+        <p class="card-text">Trade details for trade ID {{trade.trade_id}}</p>
+        <a href="seti/{{trade.trade_id}}" class="btn btn-primary">Settlement Instruction</a>
+    </div>
+</div>
+<br>
+
+<!-- Table -->
+<div class=".table-responsive">
+    <table class="table">
+        <tr>
+            <th>Trade ID</th>
+            <th>Nominal</th>
+            <th>Price</th>
+            <th>Instrument</th>
+            <th>Market</th>
+            <th>Counterparty</th>
+            <th>Settlement status indicator</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{trade.trade_id}}</th>
+                <td>{{trade.nominal}}</td>
+                <td>{{trade.price}}</td>
+                <td>{{trade.instrument}}</td>
+                <td>{{trade.market}}</td>
+                <td>{{trade.cpty}}</td>
+                <td>{{trade.sett_stus_ind}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="container .table-responsive">
+    <table class="table">
+        <thead>Date Details</thead>
+        <tr>
+            <th>Trade Date</th>
+            <th>Trade Entry Date</th>
+            <th>Trade Settlement Date</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{trade.trade_date}}</td>
+                <td>{{trade.entry_date}}</td>
+                <td>{{trade.sett_date}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}

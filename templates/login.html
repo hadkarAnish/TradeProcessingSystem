@@ -1,0 +1,18 @@
+{% extends 'includes/_navbar_v2.html' %} {% block content2 %}
+<h1>Login</h1>
+<!-- shud this be removed? need to find where else does this code go -->
+{% include 'includes/_messages.html' %}
+<form action="" method="POST">
+    <div class="form-group">
+        <label>Username</label>
+        <!-- the value stays if the form's refreshed -->
+        <input type="text" name="username" class="form-control" value={{ request.form.username }}></input>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <!-- the value stays if the form's refreshed -->
+        <input type="password" name="password" class="form-control" value={{ request.form.password }}></input>
+    </div>
+    <button input="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

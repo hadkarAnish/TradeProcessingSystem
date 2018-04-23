@@ -1,0 +1,39 @@
+{% extends '/includes/_navbar_v2.html' %} {% block content2 %}
+<h1>All trades</h1>
+<table id="example" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Trade ID</th>
+            <th>Nominal</th>
+            <th>Instrument</th>
+            <th>Market</th>
+            <th>Price</th>
+            <th>Trade Date</th>
+            <th>Entry Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trade in trades %}
+        <tr>
+            <td><a href="trade/{{trade.trade_id}}" class="text-info" data-toggle="tooltip" data-placement="top" title="Click for trade info">{{ trade.trade_id }}</a></td>
+            <td><a href="trade/{{trade.trade_id}}" class="text-muted" data-toggle="tooltip" data-placement="top" title="Click for trade info">{{ trade.nominal }}</a></td>
+            <td><a href="trade/{{trade.trade_id}}" class="text-muted" data-toggle="tooltip" data-placement="top" title="Click for trade info">{{ trade.instrument }}</a></td>
+            <td><a href="trade/{{trade.trade_id}}" class="text-muted" data-toggle="tooltip" data-placement="top" title="Click for trade info">{{ trade.market }}</a></td>
+            <td><a href="trade/{{trade.trade_id}}" class="text-muted" data-toggle="tooltip" data-placement="top" title="Click for Trade info">{{ trade.price }}</a></td>
+            <td><a href="trade/{{trade.trade_id}}" class="text-muted" data-toggle="tooltip" data-placement="top" title="Click for Trade info">{{ trade.trade_date }}</a></td>
+            <td><a href="trade/{{trade.trade_id}}" class="text-muted" data-toggle="tooltip" data-placement="top" title="Click for Trade info">{{ trade.entry_date }}</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>Trade ID</th>
+            <th>Nominal</th>
+            <th>Instrument</th>
+            <th>Market</th>
+            <th>Price</th>
+            <th>Trade Date</th>
+            <th>Entry Date</th>
+        </tr>
+    </tfoot>
+    {% endblock %}

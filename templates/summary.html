@@ -1,0 +1,144 @@
+ {% extends '/includes/_navbar_v2.html' %} {% block content2 %}
+<div class="row">
+    <div class="col-sm-6">
+        <div id="chart-A" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+        <div class=".table-responsive">
+            <table class="table">
+                <caption>Lifetime trades(in percentage)</caption>
+                <thead>
+                    <tr>
+                        <th>Open Trades</th>
+                        <th>Partially Settled Trades</th>
+                        <th>Fully Settled Trades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{trade_stus_count.count_open}}</td>
+                        <td>{{trade_stus_count.count_partial}}</td>
+                        <td>{{trade_stus_count.count_settled}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div id="chart-B" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+        <div class=".table-responsive">
+            <table class="table">
+                <caption>Today's trades(in percentage)</caption>
+                <thead>
+                    <tr>
+                        <th>Open Trades</th>
+                        <th>Partially Settled Trades</th>
+                        <th>Fully Settled Trades</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{today_sett_stus_count.count_open}}</td>
+                        <td>{{today_sett_stus_count.count_partial}}</td>
+                        <td>{{today_sett_stus_count.count_settled}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block highcharts %}
+    <!-- Highcharts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        // Highcharts.chart('hc_sett_statues', {
+        $('#chart-A').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: 0,
+                plotShadow: false
+            },
+            title: {
+                text: 'Overall<br>Sett<br>Statues',
+                align: 'center',
+                verticalAlign: 'middle',
+                y: 40
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true,
+                        distance: -50,
+                        style: {
+                            fontWeight: 'bold',
+                            color: 'white'
+                        }
+                    },
+                    startAngle: -90,
+                    endAngle: 90,
+                    center: ['50%', '75%']
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Settlement Status',
+                innerSize: '50%',
+                data: [
+                    ['Open', {{ trade_stus_count.count_open}}],
+                    ['Partial', {{trade_stus_count.count_partial}}],
+                    ['Full', {{trade_stus_count.count_settled}}],
+                ]
+            }]
+        });
+        // Highcharts.chart('hc_today_sett_statues', {
+        // Create the chart
+        $('#chart-B').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: 0,
+                plotShadow: false
+            },
+            title: {
+                text: 'Todays<br>Sett<br>Statues',
+                align: 'center',
+                verticalAlign: 'middle',
+                y: 40
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true,
+                        distance: -50,
+                        style: {
+                            fontWeight: 'bold',
+                            color: 'white'
+                        }
+                    },
+                    startAngle: -90,
+                    endAngle: 90,
+                    center: ['50%', '75%']
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Settlement Status',
+                innerSize: '50%',
+                data: [
+                    ['Open', {{today_sett_stus_count.count_open}}],
+                    ['Partial', {{today_sett_stus_count.count_partial}}],
+                    ['Full', {{today_sett_stus_count.count_settled}}],
+                ]
+            }]
+        });
+    });
+</script>
+
+{% endblock %}
